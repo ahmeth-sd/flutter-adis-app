@@ -1,0 +1,27 @@
+Uygulamaya ilk girişte kullanıcının düzeyine göre seçimyapılmalı, örneğinbilişsel düzeyi kötü bir kullanıcı için ana ekranda 3x3 sayıda butonolabilir.  Kullanıcının yaşı, tanısı varsa tanısı, işitme görme engeline göre sorularsorarak, buton kontrastları arttırılabilir, yazılar büyütülebilir, kalınlaştırılabilir, dikkat sorunu yaşayan danışanlar için renklendirilebilirve bu kullanıcılardan alınan bilgilere göre yapılmalı, manuel olarakdakullanıcı değiştirebilmeli.  Faz 1 için yaş, tanı, işitme görme bilişsel engel varlığı gibi temel bilgileryeterli ancak, Faz 2’de ilgi alanları, terapi varlığı, bulunulan ortamlargibi
+detaylı bilgiler eklenerek uygulama daha da bireysel farklılıklara odaklı
+kendini geliştirebilmeli.  Yukarıda bulunan görsel otsimo AAC isimli uygulamadan alınmış olup, bizim uygulamamız içinde aynı şekilde 3 seçenekli kullanımşekli sunulmalı.
+Uygulama Tasarımı, özellikler ve Faz Çalışması
+ Ana ekranda bulunacak buton sayısı giriş ekranında sorulan sorular ileönerilecek ancak kullanıcı da bu şekilde ayarlayabilir.
+Uygulama Tasarımı, özellikler ve Faz Çalışması
+ Uygulama ekranının en üstünde basılan butonun resminin geldiği ve cümleoluşturulabilen boşluk kısım olmalı, tek tek kelimeler seçilerek cümle
+oluşturulacak oluşum bittikten sonra hepsini birden seslendirilecekancaktek tek seçim kısmında da her butona bastığımızda seslendirme olmalı.  Ana ekranda bulunacak kategoriler belirlenen düzeye göre olacak;
+Temel düzey 4x3 lük buton düzeni : Anne- baba- yiyecekler klasörüiçecekler klasörü, istiyorum eylemi-istemiyorum eylemi- ver- al-evethayır- basit eylem klasörü-mekanlar klasörü , ek olarak kullanıcı istersemekan klasörünü kaldırabilir ve yerine farklı bir klasör kategorisi
+ekleyebilir. Orta düzey 5x4 lük buton düzeni: (değiştirilebilir, kullanıcı arttırabilir, temel düzeye ek olarak duygular, sıfatlar, zamirler ve kullanıcınınekleyebileceği klasör seçenekleri)
+Uygulama Tasarımı, özellikler ve Faz Çalışması
+Üst düzey 6x6 lık buton düzeni: Tamamen kullanıcının hayatına göreseçilen klasörler ve butonlar, buton sayısının artabildiği, kullanıcınınkendine göre ayarladığı yardıma ihtiyaç olmayan düzen
+ Ana kategoriler( yiyecekler, içecekler, duygular, eylemler her düzeydevarancak ileri düzeyde yemek kategorisinde daha spesifik kelimeler varkenbasit düzeyde daha az ama kullanıcın yine de kelime ekleyip çıkarabileceği
+düzen
+ Görselde bulunan ana sayfa düzeni aynı bu şekilde olmalı ama dahaestetikdurması adına düzenlemeler yapılmalı, semboller daha anlaşılır olmalı, seskalitesi robotik olmamalı, kelimelere aileler kendi sesleri kaydedebilmeli, uygulama temel resimlerle indirilecek ama kullanıcı ve ailesi bunları kendi
+resimleri ile değiştirebilmeli
+Uygulama Tasarımı, özellikler ve Faz Çalışması  Uygulamanın üst tarafında kullanıcıların ve ailelerin bu sistemi nasıl
+kullanacakları, nasıl kişiselleştirilebilecekleri ve dil konuşma gelişimineolanfaydalarının sunulacağı bir eğitim animasyonu olmalı  Hem geçmişte oluşturulan cümleler hem de kullanıcının ya da ailesininhazır olarak kayıtlandırdıkları cümleler bölümü olmalı, kayıtlı cümlelerkendi içinde kategorilere ayrılabilmeli, örneğin okulda kullandığımcümleler, evde kullandığım cümleler gibi  Ayarlar bölümünde ise uygulama kişiselleştirme(resimses klasör eklemealanı), ilk ekranda yer alan görsel işitsel dikkat engeli var ise yazı fontusesyüksekliği arka plan rengi gibi seçeneklerin otomatik belirlenmesi(ilksayfadan alınan bilgiler ile) sonrası manuel değişiklikler için alan Oluşturulan cümlenin hepsinin temizlenmesi ya da kelime kelime silinmesi
+için sil temizle gibi tuşlar
+Uygulama Tasarımı, özellikler ve Faz Çalışması  Okuma yazma ve bilişsel yeterlilikleri sağlayan kullanıcılar için klavyeileyazı yazıp seslendirme bölümü olmalı.  Bu bölümde yazılan yazının kelime ve gramer hatalarının tespiti ve
+düzeltimi olursa çok güzel olur ama faz 2 ye bırakılabilir bu özellik Sayfalar arası geçişi sağlayacak önceki-sonraki butonları olmalı ve farklı
+renklendirme sağlanarak diğer butonlardan ayrılmalı,  Her ne kadar kullanıcı sembolleri kendi seçtiği resimlerle değiştirse debiz, sizin gibi özellikle zamir grubunda kullanıcının fotoğraf yüklemesi zorolacağından bu sembollerin bizim tarafımızdan en iyi şekilde sembolizeedilmesi gerekmekte. Özetle;
+FAZ 1;
+Uygulama Tasarımı, özellikler ve Faz Çalışması  Görsellerdeki uygulamadan daha iyi sembolize edilmiş, daha estetikbirarayüz, görsellerde bulunan düzen aynen korunabilir çünkü en basit veenkullanışlı hali zaten böyle kategorize etmek
+ Kullanıcın resimleri kendi çektiği resimler ile değiştirebilmesi çok önemli  Aynı şekilde uygulamanın insan sesine en yakın sesi erkek ya da kadınsesi
+olarak seçenekli şekilde sunması ve kullanıcının kendi sesini o semboleisterse kaydedebilmesi  İlk sayfada alınan temel bilgiler(yaş, engeller, tanı, sözel iletişimvarlığı) ileana sayfadaki buton sayısı ve kategorileri sistemin oluşturması ancakkullanıcının kendisinin de klasör, buton ekleyebilmesi çok önemli  Geçmiş cümleler ve kayıtlı cümleler kısmı çok önemli, kayıtlı cümlelerbölümü kendi içinde klasörlere ayrılmalı  Klavye ile yazarak cümle seslendirme özelliği  Engel türüne özel yazı fontu, renkler gibi seçenekler değiştirilebilmeli  Uygulamanın nasıl kullanılacağına ve iletişime nasıl katkı sağlayacağını
+anlatan kanıta dayalı örnekler veren her zaman ulaşılabilir yardım, uygulama eğitimi bölümü olmalı
