@@ -88,16 +88,16 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       builder: (context) => EditSymbolDialog(
         item: item,
         categories: ref.read(categoryControllerProvider),
-        onSave: (label, imagePath, audioPath, categoryId, iconCode) {
+        onSave: (label, imagePath, audioPath, categoryId) {
           if (item == null) {
-             ref.read(symbolControllerProvider.notifier).addSymbol(label, imagePath, audioPath, categoryId, iconCode);
+             ref.read(symbolControllerProvider.notifier).addSymbol(label, imagePath, audioPath, categoryId, null);
           } else {
             final updated = item.copyWith(
               label: label, 
               imagePath: imagePath, 
               audioPath: audioPath,
               categoryId: categoryId,
-              iconCode: iconCode
+              // Keep old icon if not updated (or null)
             );
             ref.read(symbolControllerProvider.notifier).updateSymbol(updated);
           }

@@ -13,7 +13,7 @@ import '../../domain/category_item.dart';
 class EditSymbolDialog extends StatefulWidget {
   final SymbolItem? item;
   final List<CategoryItem> categories;
-  final Function(String label, String? imagePath, String? audioPath, String? categoryId, int? iconCode) onSave;
+  final Function(String label, String? imagePath, String? audioPath, String? categoryId) onSave;
   final VoidCallback? onDelete;
 
   const EditSymbolDialog({
@@ -33,23 +33,11 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
   String? _imagePath;
   String? _audioPath;
   String? _selectedCategoryId;
-  int? _selectedIconCode;
   
   // Audio Recording
   final _audioRecorder = AudioRecorder();
   final _audioPlayer = AudioPlayer();
   bool _isRecording = false;
-
-  final List<IconData> _predefinedIcons = [
-    Icons.home, Icons.school, Icons.park, Icons.local_hospital,
-    Icons.restaurant, Icons.local_drink, Icons.cake, Icons.icecream,
-    Icons.face, Icons.face_2, Icons.face_3, Icons.face_4,
-    Icons.sentiment_satisfied_alt, Icons.sentiment_dissatisfied, Icons.sentiment_very_dissatisfied,
-    Icons.thumb_up, Icons.thumb_down, Icons.waving_hand, Icons.favorite,
-    Icons.directions_run, Icons.visibility, Icons.hearing, Icons.touch_app,
-    Icons.bed, Icons.chair, Icons.weekend, Icons.tv,
-    Icons.toys, Icons.sports_soccer, Icons.music_note, Icons.brush,
-  ];
 
   @override
   void initState() {
@@ -57,8 +45,10 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
     _labelController = TextEditingController(text: widget.item?.label ?? '');
     _imagePath = widget.item?.imagePath;
     _audioPath = widget.item?.audioPath;
-    _selectedCategoryId = widget.item?.categoryId;
-    _selectedIconCode = widget.item?.iconCode;
+    
+    // Safety check: ensure categoryId exists in provided categories
+    final hasCategory = widget.categories.any((c) => c.id == widget.item?.categoryId);
+    _selectedCategoryId = hasCategory ? widget.item?.categoryId : null;
   }
 
   Future<void> _pickImage() async {
@@ -67,16 +57,8 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
     if (file != null) {
       setState(() {
         _imagePath = file.path;
-        _selectedIconCode = null; // Clear icon if image picked
       });
     }
-  }
-
-  void _selectIcon(IconData icon) {
-    setState(() {
-      _selectedIconCode = icon.codePoint;
-      _imagePath = null; // Clear image if icon selected
-    });
   }
 
   Future<void> _toggleRecord() async {
@@ -145,56 +127,22 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
               },
             ),
             const SizedBox(height: 16),
-            const Text('Görsel Seçimi:', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            
-            // Icon Grid
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: GridView.builder(
-                padding: const EdgeInsets.all(8),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                ),
-                itemCount: _predefinedIcons.length,
-                itemBuilder: (context, index) {
-                  final icon = _predefinedIcons[index];
-                  final isSelected = _selectedIconCode == icon.codePoint;
-                  return InkWell(
-                    onTap: () => _selectIcon(icon),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: isSelected ? Colors.blue[100] : null,
-                        border: isSelected ? Border.all(color: Colors.blue, width: 2) : null,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Icon(icon, color: isSelected ? Colors.blue : null),
-                    ),
-                  );
-                },
-              ),
-            ),
-            
+            const Text('Görsel:', style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             Row(
               children: [
-                const Text("Veya Galeri: "),
                 if (_imagePath != null)
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.file(File(_imagePath!), width: 40, height: 40, fit: BoxFit.cover),
-                  ),
-                  
+                    child: Image.file(File(_imagePath!), width: 60, height: 60, fit: BoxFit.cover),
+                  )
+                else
+                  const Icon(Icons.image, size: 60, color: Colors.grey),
+                const SizedBox(width: 8),
                 TextButton.icon(
                   onPressed: _pickImage,
                   icon: const Icon(Icons.photo),
-                  label: const Text('Fotoğraf Yükle'),
+                  label: const Text('Fotoğraf Seç'),
                 ),
               ],
             ),
@@ -234,7 +182,7 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
         FilledButton(
           onPressed: () {
             if (_labelController.text.isNotEmpty) {
-              widget.onSave(_labelController.text, _imagePath, _audioPath, _selectedCategoryId, _selectedIconCode);
+              widget.onSave(_labelController.text, _imagePath, _audioPath, _selectedCategoryId);
               Navigator.pop(context);
             }
           },
