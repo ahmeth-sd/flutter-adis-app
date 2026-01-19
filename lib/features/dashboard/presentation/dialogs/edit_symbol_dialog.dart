@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:record/record.dart';
@@ -134,7 +135,9 @@ class _EditSymbolDialogState extends State<EditSymbolDialog> {
                 if (_imagePath != null)
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.file(File(_imagePath!), width: 60, height: 60, fit: BoxFit.cover),
+                    child: kIsWeb
+                        ? Image.network(_imagePath!, width: 60, height: 60, fit: BoxFit.cover, errorBuilder: (c,e,s) => const Icon(Icons.broken_image))
+                        : Image.file(File(_imagePath!), width: 60, height: 60, fit: BoxFit.cover),
                   )
                 else
                   const Icon(Icons.image, size: 60, color: Colors.grey),

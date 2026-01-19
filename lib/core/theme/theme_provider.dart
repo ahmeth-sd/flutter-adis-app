@@ -65,12 +65,33 @@ final themeDataProvider = Provider<ThemeData>((ref) {
 
   if (settings.isHighContrast) {
     return ThemeData(
-      colorScheme: const ColorScheme.highContrastLight(),
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: Colors.black,
+      colorScheme: const ColorScheme.dark(
+        primary: Colors.yellow,
+        onPrimary: Colors.black,
+        surface: Colors.black,
+        onSurface: Colors.yellow,
+        secondary: Colors.white,
+      ),
+      cardTheme: CardThemeData(
+        color: Colors.grey[900], // Slightly lighter black for cards
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: const BorderSide(color: Colors.yellow, width: 2)),
+      ),
+      iconTheme: const IconThemeData(color: Colors.yellow, size: 32),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.yellow,
+        titleTextStyle: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.yellow),
+      ),
       useMaterial3: true,
       textTheme: const TextTheme(
-        bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        bodyLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+        bodyLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.yellow),
+        titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow), // Card labels
+        titleLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.yellow),
       ).apply(fontSizeFactor: settings.fontSizeScale),
     );
   }

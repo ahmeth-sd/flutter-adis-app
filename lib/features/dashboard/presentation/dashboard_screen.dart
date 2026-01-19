@@ -235,19 +235,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               },
             ),
           ),
-          // Navigation Bar
-          Container(
-            height: 60,
-            color: Colors.grey[900],
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back, color: Colors.white)),
-                const Text('Sayfa 1 / 3', style: TextStyle(color: Colors.white)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward, color: Colors.white)),
-              ],
-            ),
-          ),
         ],
       ),
     );

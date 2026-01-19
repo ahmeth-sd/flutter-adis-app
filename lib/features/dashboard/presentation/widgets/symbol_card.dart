@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SymbolCard extends StatelessWidget {
@@ -32,13 +33,17 @@ class SymbolCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (imagePath != null && File(imagePath!).existsSync())
+            if (imagePath != null)
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.file(File(imagePath!), fit: BoxFit.cover),
+                    child: kIsWeb 
+                      ? Image.network(imagePath!, fit: BoxFit.cover, errorBuilder: (c,e,s) => const Icon(Icons.broken_image))
+                      : (File(imagePath!).existsSync() 
+                          ? Image.file(File(imagePath!), fit: BoxFit.cover)
+                          : const Icon(Icons.image_not_supported)),
                   ),
                 ),
               )
