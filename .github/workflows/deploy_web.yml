@@ -16,7 +16,7 @@ jobs:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter build web --release --base-href "/flutter-adis-app/"
+      - run: flutter build web --release --base-href "/flutter-adis-app/" --no-tree-shake-icons
 
       - uses: peaceiris/actions-gh-pages@v3
         if: success()
