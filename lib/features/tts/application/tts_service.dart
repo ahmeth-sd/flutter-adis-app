@@ -17,6 +17,9 @@ class TTSService {
 
   Future<void> speak(String text) async {
     if (text.isNotEmpty) {
+      // Web platformunda dilin bazen varsayılana dönmesini engellemek için
+      // konuşmadan önce dili tekrar set ediyoruz.
+      await _flutterTts.setLanguage("tr-TR");
       await _flutterTts.speak(text);
     }
   }
